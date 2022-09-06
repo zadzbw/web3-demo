@@ -6,4 +6,8 @@
   .all-center {
     @apply flex justify-center items-center w-full h-full
   }
+
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
 }
