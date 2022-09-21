@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "NODE_ENV=development vite",
     "build": "NODE_ENV=production vite build",
+    "dev:lib": "vite build --config vite.lib.config.ts --mode dev",
+    "build:lib": "vite build --config vite.lib.config.ts --mode prod",
     "preview": "vite preview",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx --format codeframe",
     "lint:local": "npm run lint -- src",
