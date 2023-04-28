@@ -5,6 +5,16 @@ import { defineConfig, splitVendorChunkPlugin } from 'vite'
 const isDev = process.env.NODE_ENV === 'development'
 
 export default defineConfig({
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ['react', 'react-dom'],
+          web3: ['ethers', 'wagmi', '@wagmi/core'],
+        },
+      },
+    },
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
