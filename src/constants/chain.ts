@@ -1,3 +1,4 @@
+import { mainnet } from '@wagmi/core/chains'
 import { Chain } from 'wagmi'
 
 const bscExplorer = { name: 'BscScan', url: 'https://bscscan.com' }
@@ -62,4 +63,4 @@ const bscTest: Chain = {
   testnet: true,
 }
 
-export const CHAINS = [bsc, bscTest]
+export const CHAINS = [mainnet, bsc, bscTest]

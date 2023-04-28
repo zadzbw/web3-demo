@@ -1,6 +1,9 @@
 lockfileVersion: '6.0'
 
 dependencies:
+  '@wagmi/core':
+    specifier: ^0.10.10
+    version: 0.10.10(ethers@5.7.2)(react@18.2.0)(typescript@5.0.4)
   buffer:
     specifier: ^6.0.3
     version: 6.0.3
@@ -821,7 +824,7 @@ packages:
       '@json-rpc-tools/utils': 1.7.6
       axios: 0.21.4
       safe-json-utils: 1.1.1
-      ws: 7.4.6
+      ws: 7.5.9
     transitivePeerDependencies:
       - bufferutil
       - debug
@@ -4523,12 +4526,12 @@ packages:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
     dev: true
 
-  /isomorphic-ws@4.0.1(ws@7.4.6):
+  /isomorphic-ws@4.0.1(ws@7.5.9):
     resolution: {integrity: sha512-BhBvN2MBpWTaSHdWRb/bwdZJ1WaehQ2L1KngkCkfLUGF0mAWAT1sQUQacEmQ0jXkFw/czDXPNQSL5u2/Krsz1w==}
     peerDependencies:
       ws: '*'
     dependencies:
-      ws: 7.4.6
+      ws: 7.5.9
     dev: false
 
   /istanbul-lib-coverage@3.2.0:
@@ -4575,11 +4578,11 @@ packages:
       delay: 5.0.0
       es6-promisify: 5.0.0
       eyes: 0.1.8
-      isomorphic-ws: 4.0.1(ws@7.4.6)
+      isomorphic-ws: 4.0.1(ws@7.5.9)
       json-stringify-safe: 5.0.1
       lodash: 4.17.21
       uuid: 8.3.2
-      ws: 7.4.6
+      ws: 7.5.9
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
