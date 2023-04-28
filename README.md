@@ -1,3 +1,3 @@
 # web3-demo
 
-* connect wallet
+* connect wallet ✅

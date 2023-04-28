@@ -9,7 +9,16 @@
   <body>
     <div id="root"></div>
     <script type="module">
-      // window.global = window
+      /**
+       * init for web3 project & inject node built-in modules
+       * link: https://github.com/vitejs/vite/issues/3817#issuecomment-864450199
+       */
+      window.global = window
+      import { Buffer } from 'buffer'
+      import EventEmitter from 'events'
+
+      window.Buffer = Buffer
+      window.EventEmitter = EventEmitter
     </script>
     <script type="module" src="/src/index.tsx"></script>
   </body>
