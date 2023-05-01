@@ -8,8 +8,6 @@ const root = createRoot(document.getElementById('root') as HTMLElement)
 
 root.render(
   <WagmiProvider>
-    <div className="m-2">
-      <App />
-    </div>
+    <App />
   </WagmiProvider>,
 )

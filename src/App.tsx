@@ -15,7 +15,7 @@ export default function App() {
 
   if (address) {
     return (
-      <div className="space-y-1">
+      <div className="m-2 mt-16 space-y-1">
         <button className="rounded-2xl border-2 px-4 py-2 font-bold" onClick={() => disconnect()}>
           Disconnect
         </button>
@@ -31,9 +31,22 @@ export default function App() {
     )
   }
 
+  const handleClick = () => {
+    window.aaa()
+  }
+
   return (
-    <button className="rounded-2xl border-2 px-4 py-2 font-bold" onClick={() => connect()}>
-      Connect Wallet
-    </button>
+    <div className="m-2 mt-16 flex flex-col space-y-1">
+      <button className="rounded-2xl border-2 px-4 py-2 font-bold" onClick={() => connect()}>
+        Connect Wallet
+      </button>
+      <button
+        id="test-btn"
+        className="rounded-2xl border-2 px-4 py-2 font-bold"
+        onClick={handleClick}
+      >
+        Click Me
+      </button>
+    </div>
   )
 }
