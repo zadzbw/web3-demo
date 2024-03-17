@@ -10,7 +10,7 @@ export default defineConfig({
       output: {
         manualChunks: {
           react: ['react', 'react-dom'],
-          web3: ['ethers', 'wagmi', '@wagmi/core'],
+          web3: ['viem', 'wagmi', '@wagmi/core'],
         },
       },
     },
