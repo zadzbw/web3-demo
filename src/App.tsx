@@ -1,51 +1,69 @@
 import React from 'react'
-import { useAccount, useBalance, useConnect, useDisconnect, useNetwork } from 'wagmi'
-import { InjectedConnector } from 'wagmi/connectors/injected'
+import { readContract } from '@wagmi/core'
+import { erc20Abi } from 'viem'
+import { useAccount, useBalance, useConnect, useDisconnect } from 'wagmi'
+import { mainnet } from 'wagmi/chains'
+import { injected } from 'wagmi/connectors'
+import { config } from '@/web3/config'
 
 export default function App() {
-  const { connect } = useConnect({
-    connector: new InjectedConnector(),
-  })
+  const { connect } = useConnect()
   const { disconnect } = useDisconnect()
-  const { address } = useAccount()
-  const { chain } = useNetwork()
-  const { data } = useBalance({
+  const { address, chain } = useAccount()
+  const { data: balance } = useBalance({
     address,
   })
 
+  const handleClick = () => {
+    readContract(config, {
+      chainId: mainnet.id,
+      abi: erc20Abi,
+      functionName: 'symbol',
+      // address: '0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2', // MKR
+      address: '0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce', // SHIB
+    })
+      .then((symbol) => {
+        console.log({ symbol })
+      })
+      .catch((e: Error) => {
+        console.error('~~~error', e)
+      })
+  }
+
   if (address) {
     return (
-      <div className="m-2 mt-16 space-y-1">
-        <button className="rounded-2xl border-2 px-4 py-2 font-bold" onClick={() => disconnect()}>
-          Disconnect
-        </button>
+      <div className="m-2 mt-16 flex flex-col gap-y-1">
+        <div className="flex gap-x-1">
+          <button className="rounded-2xl border-2 px-4 py-2 font-bold" onClick={() => disconnect()}>
+            Disconnect
+          </button>
+          <button
+            id="test-btn"
+            className="rounded-2xl border-2 px-4 py-2 font-bold"
+            onClick={handleClick}
+          >
+            Query Symbol
+          </button>
+        </div>
         <div>address: {address}</div>
         <div>chainInfo: {chain?.name}</div>
         <div>chainId: {chain?.id}</div>
-        {data && (
+        {balance && (
           <div>
-            balance: {data.formatted} {data.symbol}
+            balance: {balance.formatted} {balance.symbol}
           </div>
         )}
       </div>
     )
   }
 
-  const handleClick = () => {
-    window.aaa()
-  }
-
   return (
     <div className="m-2 mt-16 flex flex-col space-y-1">
-      <button className="rounded-2xl border-2 px-4 py-2 font-bold" onClick={() => connect()}>
-        Connect Wallet
-      </button>
       <button
-        id="test-btn"
         className="rounded-2xl border-2 px-4 py-2 font-bold"
-        onClick={handleClick}
+        onClick={() => connect({ connector: injected() })}
       >
-        Click Me
+        Connect Wallet
       </button>
     </div>
   )

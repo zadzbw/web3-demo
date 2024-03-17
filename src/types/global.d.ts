@@ -3,6 +3,4 @@
 // config.define in vite.config.ts
 declare const __DEV__: boolean
 
-declare interface Window {
-  aaa: () => void
-}
+// declare interface Window {}
